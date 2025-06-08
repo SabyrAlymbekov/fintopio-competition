@@ -161,17 +161,232 @@
             50% { transform: scale(1.1); box-shadow: 0 0 20px #daa520; }
         }
         
-        /* Pepe vibes */
-        .pepe-element {
-            background: linear-gradient(45deg, #32cd32, #228b22);
-            border-radius: 15px;
-            animation: pepeVibes 2.5s ease-in-out infinite;
+        /* Pepe parallax layers with depth blur */
+        .pepe-layer {
+            position: absolute;
+            pointer-events: none;
+            transition: transform 0.1s ease-out;
+            z-index: 1;
         }
         
-        @keyframes pepeVibes {
-            0%, 100% { filter: hue-rotate(0deg); }
-            50% { filter: hue-rotate(30deg); }
+        .pepe-layer-1 {
+            filter: blur(8px);
+            opacity: 0.3;
+            z-index: 1;
         }
+        
+        .pepe-layer-2 {
+            filter: blur(6px);
+            opacity: 0.5;
+            z-index: 2;
+        }
+        
+        .pepe-layer-3 {
+            filter: blur(4px);
+            opacity: 0.7;
+            z-index: 3;
+        }
+        
+        .pepe-layer-4 {
+            filter: blur(2px);
+            opacity: 0.85;
+            z-index: 4;
+        }
+        
+        .pepe-layer-5 {
+            filter: blur(0px);
+            opacity: 1;
+            z-index: 5;
+        }
+        
+        .pepe-float {
+            animation: pepeFloat 6s ease-in-out infinite;
+        }
+        
+        @keyframes pepeFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(2deg); }
+            66% { transform: translateY(-5px) rotate(-1deg); }
+        }
+        
+        .pepe-bounce {
+            animation: pepeBounce 4s ease-in-out infinite;
+        }
+        
+        @keyframes pepeBounce {
+            0%, 100% { transform: scale(1) translateY(0px); }
+            50% { transform: scale(1.05) translateY(-10px); }
+        }
+        
+        .pepe-wiggle {
+            animation: pepeWiggle 3s ease-in-out infinite;
+        }
+        
+        @keyframes pepeWiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(1deg); }
+            75% { transform: rotate(-1deg); }
+        }
+        
+        /* Large Pepe effects */
+        .pepe-large {
+            filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.5));
+            animation: pepeLargeFloat 8s ease-in-out infinite;
+        }
+        
+        @keyframes pepeLargeFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+            25% { transform: translateY(-30px) rotate(3deg) scale(1.02); }
+            50% { transform: translateY(-10px) rotate(-2deg) scale(0.98); }
+            75% { transform: translateY(-20px) rotate(1deg) scale(1.01); }
+        }
+        
+        /* Giant rainbow Pepe */
+        .pepe-rainbow-giant {
+            filter: hue-rotate(0deg) saturate(1.5) brightness(1.2) drop-shadow(0 0 50px rgba(255, 255, 255, 0.3));
+            animation: pepeRainbowFloat 12s ease-in-out infinite, rainbowHue 6s linear infinite;
+            z-index: 6 !important;
+        }
+        
+        @keyframes pepeRainbowFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1);
+                filter: hue-rotate(0deg) saturate(1.5) brightness(1.2) drop-shadow(0 0 50px rgba(255, 255, 255, 0.3));
+            }
+            25% { 
+                transform: translateY(-40px) rotate(5deg) scale(1.05);
+                filter: hue-rotate(90deg) saturate(2) brightness(1.4) drop-shadow(0 0 60px rgba(255, 0, 255, 0.5));
+            }
+            50% { 
+                transform: translateY(-15px) rotate(-3deg) scale(0.95);
+                filter: hue-rotate(180deg) saturate(1.8) brightness(1.3) drop-shadow(0 0 70px rgba(0, 255, 255, 0.4));
+            }
+            75% { 
+                transform: translateY(-30px) rotate(2deg) scale(1.02);
+                filter: hue-rotate(270deg) saturate(2.2) brightness(1.5) drop-shadow(0 0 55px rgba(255, 255, 0, 0.6));
+            }
+        }
+        
+        @keyframes rainbowHue {
+            0% { filter: hue-rotate(0deg) saturate(1.5) brightness(1.2) drop-shadow(0 0 50px rgba(255, 255, 255, 0.3)); }
+            25% { filter: hue-rotate(90deg) saturate(2) brightness(1.4) drop-shadow(0 0 60px rgba(255, 0, 255, 0.5)); }
+            50% { filter: hue-rotate(180deg) saturate(1.8) brightness(1.3) drop-shadow(0 0 70px rgba(0, 255, 255, 0.4)); }
+            75% { filter: hue-rotate(270deg) saturate(2.2) brightness(1.5) drop-shadow(0 0 55px rgba(255, 255, 0, 0.6)); }
+            100% { filter: hue-rotate(360deg) saturate(1.5) brightness(1.2) drop-shadow(0 0 50px rgba(255, 255, 255, 0.3)); }
+        }
+        
+        /* Space/water floating effect */
+        .pepe-space-float {
+            animation: pepeSpaceFloat 15s ease-in-out infinite;
+        }
+        
+        @keyframes pepeSpaceFloat {
+            0%, 100% { 
+                transform: translateX(0px) translateY(0px) rotate(0deg) scale(1);
+                opacity: 0.8;
+            }
+            20% { 
+                transform: translateX(20px) translateY(-25px) rotate(4deg) scale(1.03);
+                opacity: 0.9;
+            }
+            40% { 
+                transform: translateX(-15px) translateY(-40px) rotate(-3deg) scale(0.97);
+                opacity: 1;
+            }
+            60% { 
+                transform: translateX(30px) translateY(-20px) rotate(2deg) scale(1.02);
+                opacity: 0.95;
+            }
+            80% { 
+                transform: translateX(-10px) translateY(-35px) rotate(-1deg) scale(0.99);
+                opacity: 0.85;
+            }
+        }
+        
+            /* 3D Gift Box Enhancement */
+            .gift-3d {
+                transform-style: preserve-3d;
+                perspective: 1000px;
+            }
+            
+            .gift-box-enhanced {
+                position: relative;
+                transform-style: preserve-3d;
+                animation: giftFloat 6s ease-in-out infinite, giftRotate 20s linear infinite;
+            }
+            
+            @keyframes giftFloat {
+                0%, 100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+                50% { transform: translateY(-20px) rotateX(2deg) rotateY(5deg); }
+            }
+            
+            @keyframes giftRotate {
+                0% { transform: rotateY(0deg); }
+                100% { transform: rotateY(360deg); }
+            }
+            
+            .gift-face {
+                position: absolute;
+                background: linear-gradient(135deg, #8b5cf6, #06b6d4, #10b981);
+                border-radius: 20px;
+            }
+            
+            .gift-front { 
+                width: 150px; 
+                height: 150px; 
+                transform: translateZ(75px); 
+            }
+            .gift-back { 
+                width: 150px; 
+                height: 150px; 
+                transform: rotateY(180deg) translateZ(75px); 
+            }
+            .gift-right { 
+                width: 150px; 
+                height: 150px; 
+                transform: rotateY(90deg) translateZ(75px); 
+            }
+            .gift-left { 
+                width: 150px; 
+                height: 150px; 
+                transform: rotateY(-90deg) translateZ(75px); 
+            }
+            .gift-top { 
+                width: 150px; 
+                height: 150px; 
+                transform: rotateX(90deg) translateZ(75px); 
+            }
+            .gift-bottom { 
+                width: 150px; 
+                height: 150px; 
+                transform: rotateX(-90deg) translateZ(75px); 
+            }
+            
+            .gift-ribbon-3d {
+                position: absolute;
+                background: linear-gradient(45deg, #fbbf24, #f59e0b, #d97706);
+                box-shadow: 0 0 30px rgba(251, 191, 36, 0.5);
+            }
+            
+            .gift-particles {
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                background: radial-gradient(circle, #8b5cf6, transparent);
+                border-radius: 50%;
+                animation: particleFloat 4s ease-in-out infinite;
+            }
+            
+            @keyframes particleFloat {
+                0%, 100% { 
+                    transform: translateY(0px) scale(1);
+                    opacity: 0;
+                }
+                50% { 
+                    transform: translateY(-100px) scale(1.5);
+                    opacity: 1;
+                }
+            }
         
         .typing-animation {
             overflow: hidden;
@@ -212,25 +427,107 @@
             }
         }
         
-        .parallax-bg {
-            background-image: 
-                radial-gradient(2px 2px at 20px 30px, #8b5cf6, transparent),
-                radial-gradient(2px 2px at 40px 70px, #06b6d4, transparent),
-                radial-gradient(1px 1px at 90px 40px, #8b5cf6, transparent);
-            background-repeat: repeat;
-            background-size: 100px 100px;
-            animation: parallax 20s linear infinite;
+        /* Cosmic bubbles and waves for space/water effect */
+        .cosmic-bubble {
+            position: fixed;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.3), rgba(139, 92, 246, 0.1), transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: bubbleFloat 8s ease-in-out infinite;
+            z-index: 1;
         }
         
-        @keyframes parallax {
-            0% { background-position: 0 0; }
-            100% { background-position: 100px 100px; }
+        @keyframes bubbleFloat {
+            0%, 100% { 
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+            50% { 
+                transform: translateY(-100px) scale(1.2);
+                opacity: 0.7;
+            }
+        }
+        
+        .cosmic-wave {
+            position: fixed;
+            width: 200%;
+            height: 200px;
+            background: linear-gradient(45deg, 
+                rgba(139, 92, 246, 0.1) 0%, 
+                rgba(6, 182, 212, 0.1) 25%, 
+                rgba(16, 185, 129, 0.1) 50%, 
+                rgba(139, 92, 246, 0.1) 75%, 
+                rgba(6, 182, 212, 0.1) 100%);
+            border-radius: 50%;
+            animation: waveMotion 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        @keyframes waveMotion {
+            0%, 100% { 
+                transform: translateX(-50%) translateY(0px) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% { 
+                transform: translateX(-50%) translateY(-50px) rotate(180deg);
+                opacity: 0.6;
+            }
         }
     </style>
 </head>
 <body class="gradient-bg min-h-screen text-white overflow-x-hidden">
-    <!-- Animated Background Elements -->
-    <div class="fixed inset-0 parallax-bg opacity-30 pointer-events-none"></div>
+    <!-- Pepe Parallax Container -->
+    <div id="pepe-container" class="fixed inset-0 pointer-events-none z-5">
+        <!-- Layer 1 - Most Blurred (Background) -->
+        <img src="1.png" alt="Pepe" class="pepe-layer pepe-layer-1 pepe-float w-24 h-24 top-20 left-10" data-speed="0.2">
+        <img src="2.png" alt="Pepe" class="pepe-layer pepe-layer-1 pepe-wiggle w-20 h-20 bottom-40 right-20" data-speed="0.15">
+        
+        <!-- Layer 2 -->
+        <img src="3.png" alt="Pepe" class="pepe-layer pepe-layer-2 pepe-bounce w-28 h-28 top-40 right-32" data-speed="0.4">
+        <img src="4.png" alt="Pepe" class="pepe-layer pepe-layer-2 pepe-float w-24 h-24 bottom-60 left-1/4" data-speed="0.35">
+        
+        <!-- Layer 3 - Middle -->
+        <img src="5.png" alt="Pepe" class="pepe-layer pepe-layer-3 pepe-wiggle w-24 h-24 top-1/3 left-1/3" data-speed="0.6">
+        <img src="1.png" alt="Pepe" class="pepe-layer pepe-layer-3 pepe-bounce w-26 h-26 bottom-32 right-1/4" data-speed="0.55">
+        
+        <!-- Layer 4 -->
+        <img src="2.png" alt="Pepe" class="pepe-layer pepe-layer-4 pepe-float w-26 h-26 top-60 left-1/2" data-speed="0.8">
+        <img src="3.png" alt="Pepe" class="pepe-layer pepe-layer-4 pepe-wiggle w-30 h-30 bottom-20 left-20" data-speed="0.75">
+        
+        <!-- Layer 5 - Sharpest (Foreground) -->
+        <img src="4.png" alt="Pepe" class="pepe-layer pepe-layer-5 pepe-bounce w-28 h-28 top-80 right-40" data-speed="1.0">
+        <img src="5.png" alt="Pepe" class="pepe-layer pepe-layer-5 pepe-float w-24 h-24 bottom-80 left-40" data-speed="0.95">
+        
+        <!-- Additional scattered Pepes -->
+        <img src="1.png" alt="Pepe" class="pepe-layer pepe-layer-2 pepe-wiggle w-20 h-20 top-1/4 right-1/5" data-speed="0.3">
+        <img src="2.png" alt="Pepe" class="pepe-layer pepe-layer-4 pepe-bounce w-30 h-30 top-2/3 left-2/3" data-speed="0.7">
+        <img src="3.png" alt="Pepe" class="pepe-layer pepe-layer-1 pepe-float w-16 h-16 bottom-1/4 right-1/3" data-speed="0.25">
+        <img src="4.png" alt="Pepe" class="pepe-layer pepe-layer-3 pepe-wiggle w-28 h-28 top-1/2 left-1/5" data-speed="0.5">
+        <img src="5.png" alt="Pepe" class="pepe-layer pepe-layer-5 pepe-bounce w-24 h-24 bottom-1/3 right-1/6" data-speed="0.9">
+        
+        <!-- Large Pepes with space floating effect -->
+        <img src="1.png" alt="Large Pepe" class="pepe-layer pepe-layer-4 pepe-large pepe-space-float w-48 h-48 top-1/6 left-3/4" data-speed="0.6">
+        <img src="3.png" alt="Large Pepe" class="pepe-layer pepe-layer-3 pepe-large pepe-space-float w-52 h-52 bottom-1/6 left-1/6" data-speed="0.4">
+        
+        <!-- Giant Rainbow Pepe - The ultimate cosmic traveler -->
+        <img src="5.png" alt="Rainbow Giant Pepe" class="pepe-layer pepe-rainbow-giant pepe-space-float w-[400px] h-[400px] top-[120px] left-[120px]" data-speed="0.8">
+    </div>
+
+    <!-- Cosmic bubbles and waves for space/water effect -->
+    <div class="cosmic-wave" style="top: 20%; left: 0;"></div>
+    <div class="cosmic-wave" style="top: 60%; left: 0; animation-delay: -10s;"></div>
+    <div class="cosmic-wave" style="top: 90%; left: 0; animation-delay: -5s;"></div>
+    
+    <!-- Cosmic bubbles -->
+    <div class="cosmic-bubble w-16 h-16" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="cosmic-bubble w-24 h-24" style="left: 30%; animation-delay: -2s;"></div>
+    <div class="cosmic-bubble w-12 h-12" style="left: 50%; animation-delay: -4s;"></div>
+    <div class="cosmic-bubble w-20 h-20" style="left: 70%; animation-delay: -6s;"></div>
+    <div class="cosmic-bubble w-18 h-18" style="left: 90%; animation-delay: -1s;"></div>
+    <div class="cosmic-bubble w-14 h-14" style="left: 20%; animation-delay: -3s;"></div>
+    <div class="cosmic-bubble w-22 h-22" style="left: 60%; animation-delay: -5s;"></div>
+    <div class="cosmic-bubble w-10 h-10" style="left: 80%; animation-delay: -7s;"></div>
     
     <!-- Floating Asteroids and 3D Elements -->
     <div class="fixed inset-0 pointer-events-none z-0">
@@ -285,7 +582,7 @@
     <div class="meteor" style="top: 30%; left: 90%; animation-delay: 4s;"></div>
     
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass-effect">
+    <nav class="fixed top-4 left-4 right-4 z-50 glass-effect rounded-3xl p-0.5">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="logo text-2xl font-bold text-white flex items-center">
@@ -314,7 +611,7 @@
     </nav>
     
     <!-- Hero Section -->
-    <section class="hero-section min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+    <section class="hero-section min-h-screen flex items-center justify-center relative overflow-hidden pt-32">
         <div class="container mx-auto px-6 text-center relative z-10">
             <div class="hero-content">
                 <p class="hero-badge inline-block bg-purple-900/50 border border-purple-500 rounded-full px-4 py-2 text-sm mb-8 glass-effect">
@@ -595,33 +892,69 @@
                 </div>
             </div>
             
-            <!-- 3D Gift Box with memes -->
+            <!-- Enhanced 3D Gift Box with particles -->
             <div class="gift-container relative mx-auto mb-12">
-                <div class="gift-box w-64 h-64 mx-auto relative animate-float crypto-glow">
-                    <div class="box-face box-front absolute w-full h-full bg-gradient-to-br from-purple-600 to-blue-800 rounded-lg flex items-center justify-center">
-                        <span class="text-4xl">🎁</span>
+                <div class="gift-3d">
+                    <div class="gift-box-enhanced w-48 h-48 mx-auto relative crypto-glow">
+                        <!-- 3D Cube Faces -->
+                        <div class="gift-face gift-front flex items-center justify-center">
+                            <span class="text-4xl">🎁</span>
+                        </div>
+                        <div class="gift-face gift-back flex items-center justify-center">
+                            <span class="text-4xl">💎</span>
+                        </div>
+                        <div class="gift-face gift-right flex items-center justify-center">
+                            <span class="text-4xl">🚀</span>
+                        </div>
+                        <div class="gift-face gift-left flex items-center justify-center">
+                            <span class="text-4xl">💰</span>
+                        </div>
+                        <div class="gift-face gift-top flex items-center justify-center">
+                            <span class="text-3xl">✨</span>
+                        </div>
+                        <div class="gift-face gift-bottom flex items-center justify-center">
+                            <span class="text-3xl">🌟</span>
+                        </div>
+                        
+                        <!-- Enhanced Ribbons -->
+                        <div class="gift-ribbon-3d w-12 h-full absolute top-0 left-1/2 transform -translate-x-1/2"></div>
+                        <div class="gift-ribbon-3d w-full h-12 absolute top-1/2 left-0 transform -translate-y-1/2"></div>
+                        
+                        <!-- Floating particles around gift -->
+                        <div class="gift-particles absolute -top-2 -left-2" style="animation-delay: 0s;"></div>
+                        <div class="gift-particles absolute -top-2 -right-2" style="animation-delay: 0.5s;"></div>
+                        <div class="gift-particles absolute -bottom-2 -left-2" style="animation-delay: 1s;"></div>
+                        <div class="gift-particles absolute -bottom-2 -right-2" style="animation-delay: 1.5s;"></div>
+                        <div class="gift-particles absolute top-1/2 -left-4" style="animation-delay: 2s;"></div>
+                        <div class="gift-particles absolute top-1/2 -right-4" style="animation-delay: 2.5s;"></div>
                     </div>
-                    <div class="box-lid absolute w-full h-16 bg-gradient-to-br from-purple-700 to-blue-900 rounded-lg transform -translate-y-2 animate-glow flex items-center justify-center">
-                        <span class="text-2xl">✨</span>
-                    </div>
-                    <div class="gift-ribbon absolute top-0 left-1/2 w-8 h-full bg-gradient-to-b from-yellow-400 to-yellow-600 transform -translate-x-1/2"></div>
-                    <div class="gift-ribbon-h absolute top-8 left-0 w-full h-8 bg-gradient-to-r from-yellow-400 to-yellow-600"></div>
-                    
-                    <!-- Floating meme elements around gift -->
-                    <div class="absolute -top-8 -left-8 text-2xl animate-bounce">💎</div>
-                    <div class="absolute -top-8 -right-8 text-2xl animate-pulse">🚀</div>
-                    <div class="absolute -bottom-8 -left-8 text-2xl animate-spin">💰</div>
-                    <div class="absolute -bottom-8 -right-8 text-2xl animate-bounce">🎉</div>
                 </div>
                 
+                <!-- Enhanced floating meme elements around gift -->
+                <div class="absolute -top-12 -left-12 text-2xl animate-bounce" style="animation-delay: 0s;">💎</div>
+                <div class="absolute -top-12 -right-12 text-2xl animate-pulse" style="animation-delay: 1s;">🚀</div>
+                <div class="absolute -bottom-12 -left-12 text-2xl animate-spin" style="animation-delay: 2s;">💰</div>
+                <div class="absolute -bottom-12 -right-12 text-2xl animate-bounce" style="animation-delay: 3s;">🎉</div>
+                <div class="absolute top-1/2 -left-16 text-xl animate-pulse" style="animation-delay: 0.5s;">⭐</div>
+                <div class="absolute top-1/2 -right-16 text-xl animate-bounce" style="animation-delay: 1.5s;">✨</div>
+                
+                <!-- Crypto symbols floating -->
+                <div class="absolute -top-8 left-1/4 text-xl animate-float text-yellow-400" style="animation-delay: 2.5s;">₿</div>
+                <div class="absolute -bottom-8 right-1/4 text-xl animate-float text-blue-400" style="animation-delay: 3.5s;">Ξ</div>
+                
                 <!-- Meme text -->
-                <div class="mt-8">
-                    <p class="text-yellow-400 text-lg font-bold">
+                <div class="mt-12">
+                    <p class="text-yellow-400 text-xl font-bold mb-2">
                         "This is the way" 🦍
                     </p>
-                    <p class="text-green-400 text-sm mt-2">
+                    <p class="text-green-400 text-sm mb-4">
                         - Every crypto Chad
                     </p>
+                    <div class="flex justify-center space-x-4 text-xs text-gray-400">
+                        <span>🔥 Powered by HODL energy</span>
+                        <span>💎 Diamond hands only</span>
+                        <span>🚀 To the moon guaranteed</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -872,6 +1205,146 @@
                 duration: 2,
                 ease: "power3.out"
             });
+            
+            // Pepe parallax movement based on mouse position
+            document.querySelectorAll('.pepe-layer').forEach(pepe => {
+                const speed = parseFloat(pepe.dataset.speed);
+                const moveX = (mouseX - 0.5) * 100 * speed;
+                const moveY = (mouseY - 0.5) * 100 * speed;
+                
+                gsap.to(pepe, {
+                    x: moveX,
+                    y: moveY,
+                    duration: 1.5,
+                    ease: "power2.out"
+                });
+            });
+        });
+        
+        // Pepe scroll parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = scrolled * 0.5;
+            
+            document.querySelectorAll('.pepe-layer').forEach(pepe => {
+                const speed = parseFloat(pepe.dataset.speed);
+                const yPos = -(scrolled * speed);
+                pepe.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+        
+        // Random Pepe position updates for organic movement
+        function randomizePepePositions() {
+            document.querySelectorAll('.pepe-layer').forEach(pepe => {
+                const randomX = Math.random() * 20 - 10; // -10 to 10
+                const randomY = Math.random() * 20 - 10; // -10 to 10
+                
+                gsap.to(pepe, {
+                    x: `+=${randomX}`,
+                    y: `+=${randomY}`,
+                    duration: 4 + Math.random() * 3,
+                    ease: "sine.inOut",
+                    yoyo: true,
+                    repeat: 1
+                });
+            });
+        }
+        
+        // Update Pepe positions every 8 seconds
+        setInterval(randomizePepePositions, 8000);
+        
+        // Initialize Pepe entrance animations
+        window.addEventListener('load', () => {
+            // Staggered entrance animation for all Pepes
+            gsap.from('.pepe-layer', {
+                duration: 2,
+                scale: 0,
+                rotation: 360,
+                opacity: 0,
+                ease: "elastic.out(1, 0.3)",
+                stagger: 0.2,
+                delay: 1
+            });
+            
+            // Special entrance for giant rainbow Pepe
+            gsap.from('.pepe-rainbow-giant', {
+                duration: 4,
+                scale: 0,
+                rotation: 720,
+                opacity: 0,
+                ease: "elastic.out(1, 0.5)",
+                delay: 2
+            });
+            
+            // Special entrance for large Pepes
+            gsap.from('.pepe-large', {
+                duration: 3,
+                scale: 0,
+                rotation: 540,
+                opacity: 0,
+                ease: "elastic.out(1, 0.4)",
+                stagger: 0.5,
+                delay: 1.5
+            });
+            
+            // Start random movement after entrance
+            setTimeout(randomizePepePositions, 3000);
+        });
+        
+        // Enhanced Pepe click interaction with cosmic effects
+        document.querySelectorAll('.pepe-layer').forEach(pepe => {
+            // Add a periodic pulse effect to random Pepes
+            const shouldPulse = Math.random() > 0.7;
+            if (shouldPulse) {
+                gsap.to(pepe, {
+                    scale: 1.1,
+                    duration: 2,
+                    ease: "power2.inOut",
+                    yoyo: true,
+                    repeat: -1,
+                    delay: Math.random() * 5
+                });
+            }
+            
+            // Special effects for large Pepes
+            if (pepe.classList.contains('pepe-large')) {
+                gsap.to(pepe, {
+                    filter: "drop-shadow(0 0 30px rgba(139, 92, 246, 0.8))",
+                    duration: 3,
+                    ease: "power2.inOut",
+                    yoyo: true,
+                    repeat: -1,
+                    delay: Math.random() * 3
+                });
+            }
+            
+            // Rainbow giant Pepe special cosmic movement
+            if (pepe.classList.contains('pepe-rainbow-giant')) {
+                gsap.to(pepe, {
+                    rotation: "+=360",
+                    duration: 30,
+                    ease: "none",
+                    repeat: -1
+                });
+                
+                // Cosmic trail effect
+                setInterval(() => {
+                    const trail = document.createElement('div');
+                    trail.className = 'fixed w-2 h-2 bg-purple-400 rounded-full opacity-70 pointer-events-none';
+                    trail.style.left = pepe.offsetLeft + pepe.offsetWidth/2 + 'px';
+                    trail.style.top = pepe.offsetTop + pepe.offsetHeight/2 + 'px';
+                    trail.style.zIndex = '1';
+                    document.body.appendChild(trail);
+                    
+                    gsap.to(trail, {
+                        scale: 0,
+                        opacity: 0,
+                        duration: 2,
+                        ease: "power2.out",
+                        onComplete: () => trail.remove()
+                    });
+                }, 500);
+            }
         });
     </script>
 </body>
