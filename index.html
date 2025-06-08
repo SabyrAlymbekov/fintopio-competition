@@ -4,6 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fintopio - From CeFi to DeFi in One Tap</title>
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Fintopio - From CeFi to DeFi in One Tap">
+    <meta property="og:description" content="Revolutionary crypto wallet that bridges centralized and decentralized finance. Experience seamless trading, staking, and DeFi access in one powerful app.">
+    <meta property="og:image" content="./opengraph.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://fintopio.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Fintopio">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fintopio - From CeFi to DeFi in One Tap">
+    <meta name="twitter:description" content="Revolutionary crypto wallet that bridges centralized and decentralized finance. Experience seamless trading, staking, and DeFi access in one powerful app.">
+    <meta name="twitter:image" content="./opengraph.png">
+    
+    <!-- Additional Meta Tags -->
+    <meta name="description" content="Revolutionary crypto wallet that bridges centralized and decentralized finance. Experience seamless trading, staking, and DeFi access in one powerful app.">
+    <meta name="keywords" content="crypto wallet, DeFi, CeFi, blockchain, cryptocurrency, trading, staking, fintech">
+    <meta name="author" content="Fintopio">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -35,6 +57,12 @@
         }
     </script>
     <style>
+        /* Prevent horizontal overflow */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+        
         .gradient-bg {
             background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f0f23 100%);
         }
@@ -474,6 +502,202 @@
                 opacity: 0.6;
             }
         }
+        
+        /* Wallet Section Specific Styles */
+        .wallet-section {
+            background: linear-gradient(135deg, rgba(15, 15, 35, 0.9) 0%, rgba(26, 26, 46, 0.95) 50%, rgba(22, 33, 62, 0.9) 100%);
+        }
+        
+        /* New Download Option Styles */
+        .download-option-container {
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            padding: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+        
+        .download-option-container:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.18);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.15);
+        }
+        
+        .download-option-inner {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 22px;
+            padding: 16px 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .download-option-container:hover .download-option-inner {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .app-icon-container {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .app-icon-apple {
+            background: rgba(0, 122, 255, 0.7) !important;
+            border-color: rgba(0, 122, 255, 0.8) !important;
+            box-shadow: 0 4px 20px rgba(0, 122, 255, 0.6) !important;
+        }
+        
+        .app-icon-apple:hover {
+            background: rgba(0, 122, 255, 0.9) !important;
+            box-shadow: 0 6px 25px rgba(0, 122, 255, 0.8) !important;
+            transform: scale(1.05);
+        }
+        
+        .app-icon-telegram {
+            background: rgba(42, 171, 238, 0.7) !important;
+            border-color: rgba(42, 171, 238, 0.8) !important;
+            box-shadow: 0 4px 20px rgba(42, 171, 238, 0.6) !important;
+        }
+        
+        .app-icon-telegram:hover {
+            background: rgba(42, 171, 238, 0.9) !important;
+            box-shadow: 0 6px 25px rgba(42, 171, 238, 0.8) !important;
+            transform: scale(1.05);
+        }
+        
+        .app-icon-play {
+            background: rgba(52, 168, 83, 0.7) !important;
+            border-color: rgba(52, 168, 83, 0.8) !important;
+            box-shadow: 0 4px 20px rgba(52, 168, 83, 0.6) !important;
+        }
+        
+        .app-icon-play:hover {
+            background: rgba(52, 168, 83, 0.9) !important;
+            box-shadow: 0 6px 25px rgba(52, 168, 83, 0.8) !important;
+            transform: scale(1.05);
+        }
+        
+        .app-icon-container:hover {
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .app-icon-disabled {
+            background: rgba(107, 114, 128, 0.2);
+            border-color: rgba(107, 114, 128, 0.3);
+        }
+        
+        .app-name {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        .app-name-disabled {
+            color: #9ca3af;
+        }
+        
+        button.download-btn-primary {
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%) !important;
+            color: white !important;
+            padding: 12px 24px !important;
+            border-radius: 20px !important;
+            font-weight: 600 !important;
+            font-size: 14px !important;
+            border: none !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+        }
+        
+        button.download-btn-primary:hover {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%) !important;
+            transform: translateY(-1px) !important;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4) !important;
+        }
+        
+        .download-btn-disabled {
+            background: rgba(107, 114, 128, 0.3);
+            color: #9ca3af;
+            padding: 12px 24px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            cursor: not-allowed;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .download-option-disabled {
+            opacity: 0.6;
+        }
+        
+        .download-option-disabled:hover {
+            transform: none;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+        
+        /* Legacy styles for compatibility */
+        .download-option {
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+        }
+        
+        .download-option:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .wallet-phone {
+            filter: drop-shadow(0 25px 50px rgba(139, 92, 246, 0.4));
+            max-width: 500px;
+        }
+        
+        .phone-container {
+            position: relative;
+        }
+        
+        .phone-container::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            right: -30px;
+            bottom: -30px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+            border-radius: 60px;
+            animation: pulseGlow 3s ease-in-out infinite;
+            z-index: -1;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
     </style>
 </head>
 <body class="gradient-bg min-h-screen text-white overflow-x-hidden">
@@ -582,28 +806,28 @@
     <div class="meteor" style="top: 30%; left: 90%; animation-delay: 4s;"></div>
     
     <!-- Navigation -->
-    <nav class="fixed top-4 left-4 right-4 z-50 glass-effect rounded-3xl p-0.5">
-        <div class="container mx-auto px-6 py-4">
+    <nav class="fixed top-4 left-4 right-4 md:left-8 md:right-8 z-50 glass-effect rounded-3xl p-0.5">
+        <div class="container mx-auto px-4 md:px-6 py-4">
             <div class="flex items-center justify-between">
-                <div class="logo text-2xl font-bold text-white flex items-center">
+                <div class="logo text-xl md:text-2xl font-bold text-white flex items-center">
                     <span class="text-purple-400">fint</span>opio
-                    <span class="ml-2 text-xl">🚀</span>
+                    <span class="ml-2 text-lg md:text-xl">🚀</span>
                 </div>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#" class="nav-link text-gray-300 hover:text-purple-400 transition-colors flex items-center">
+                <div class="hidden md:flex space-x-6 lg:space-x-8 items-center">
+                    <a href="#" class="nav-link text-gray-300 hover:text-purple-400 transition-colors flex items-center text-sm lg:text-base">
                         🏠 Home
                     </a>
-                    <a href="#" class="nav-link text-gray-300 hover:text-purple-400 transition-colors flex items-center">
+                    <a href="#" class="nav-link text-gray-300 hover:text-purple-400 transition-colors flex items-center text-sm lg:text-base">
                         🤔 About
                     </a>
-                    <a href="#" class="nav-link text-gray-300 hover:text-purple-400 transition-colors flex items-center">
+                    <a href="#" class="nav-link text-gray-300 hover:text-purple-400 transition-colors flex items-center text-sm lg:text-base">
                         ✨ Features
                     </a>
-                    <a href="#" class="nav-link text-gray-300 hover:text-purple-400 transition-colors flex items-center">
+                    <a href="#" class="nav-link text-gray-300 hover:text-purple-400 transition-colors flex items-center text-sm lg:text-base">
                         🎯 Get Started
                     </a>
                 </div>
-                <button class="start-btn bg-purple-600 hover:bg-purple-700 px-6 py-2 rounded-full transition-all hover-lift flex items-center">
+                <button class="start-btn bg-purple-600 hover:bg-purple-700 px-4 md:px-6 py-2 rounded-full transition-all hover-lift flex items-center text-sm md:text-base">
                     Start Now 💎
                 </button>
             </div>
@@ -693,7 +917,7 @@
                                         </div>
                                     </div>
                                     <div class="text-right">
-                                        <p class="text-white text-sm">$52,847.32</p>
+                                        <p class="text-white text-sm">$117,244</p>
                                         <p class="text-green-400 text-xs">+2.35% 📈</p>
                                     </div>
                                 </div>
@@ -794,20 +1018,6 @@
                         </div>
                     </div>
                     
-                    <!-- Meme section -->
-                    <div class="mt-8 glass-effect rounded-xl p-6 border border-yellow-500/30">
-                        <h4 class="font-bold text-lg mb-2 text-yellow-400">Meme Corner 🎭</h4>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="text-center p-3 bg-green-500/10 rounded-lg">
-                                <div class="text-2xl mb-2">💎🙌</div>
-                                <div class="text-xs">Diamond Hands</div>
-                            </div>
-                            <div class="text-center p-3 bg-red-500/10 rounded-lg">
-                                <div class="text-2xl mb-2">📈🚀</div>
-                                <div class="text-xs">To the Moon</div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 
                 <div class="phone-display relative">
@@ -823,7 +1033,7 @@
                                     <div class="crypto-card bg-gray-800 rounded-lg p-3 hover-lift">
                                         <div class="w-8 h-8 bg-orange-500 rounded-full mb-2 flex items-center justify-center">₿</div>
                                         <p class="text-xs text-gray-400">BTC 🚀</p>
-                                        <p class="text-sm font-bold">$52,847</p>
+                                        <p class="text-sm font-bold">$117,244</p>
                                     </div>
                                     <div class="crypto-card bg-gray-800 rounded-lg p-3 hover-lift">
                                         <div class="w-8 h-8 bg-blue-500 rounded-full mb-2 flex items-center justify-center">Ξ</div>
@@ -854,6 +1064,123 @@
                 </div>
             </div>
         </div>
+    </section>
+    
+    <!-- Wallet Section -->
+    <section class="wallet-section py-20 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Content -->
+                <div class="text-left">
+                    <h2 class="text-5xl md:text-7xl font-bold mb-8 leading-tight">
+                        Start Using<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Fintopio Wallet.</span>
+                    </h2>
+                    
+                    <p class="text-xl text-gray-300 mb-12 max-w-md">
+                        Choose any format that is convenient for you to use our app.
+                    </p>
+                    <a href="https://apps.apple.com/ae/app/fintopio/id6480297286">
+                    <!-- Download Options -->
+                    <div class="space-y-6 max-w-md">
+                        <!-- App Store -->
+                        <div class="download-option-container">
+                            <div class="download-option-inner">
+                                <div class="flex items-center space-x-4">
+                                    <div class="app-icon-container app-icon-apple">
+                                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="app-name">App Store</div>
+                                    </div>
+                                    <button class="download-btn-primary">
+                                        Download
+                                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+                        <!-- Telegram App -->
+                         <a href="https://t.me/fintopio">
+                        <div class="download-option-container">
+                            <div class="download-option-inner">
+                                <div class="flex items-center space-x-4">
+                                    <div class="app-icon-container app-icon-telegram">
+                                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="app-name">Telegram App</div>
+                                    </div>
+                                    <button class="download-btn-primary">
+                                        Open
+                                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+                        <!-- Google Play -->
+                         <a href="https://play.google.com/store/apps/details?id=com.fintopio">
+                        <div class="download-option-container">
+                            <div class="download-option-inner">
+                                <div class="flex items-center space-x-4">
+                                    <div class="app-icon-container app-icon-play">
+                                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="app-name">Google Play</div>
+                                    </div>
+                                    <button class="download-btn-primary">
+                                        Download
+                                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Right Phone Image -->
+                <div class="lg:flex justify-center items-center hidden">
+                    <div class="phone-container relative">
+                        <img src="phone.webp" alt="Fintopio Wallet App" class="wallet-phone max-w-lg w-full h-auto animate-float filter drop-shadow-2xl">
+                        
+                        <!-- Floating crypto elements around phone -->
+                        <div class="absolute -top-10 -left-10 animate-bounce delay-100">
+                            <div class="w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-sm font-bold">₿</div>
+                        </div>
+                        <div class="absolute top-1/4 -right-12 animate-bounce delay-300">
+                            <div class="w-6 h-6 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-xs">Ξ</div>
+                        </div>
+                        <div class="absolute bottom-1/3 -left-8 animate-bounce delay-500">
+                            <div class="w-7 h-7 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center text-sm">Ð</div>
+                        </div>
+                        <div class="absolute -bottom-8 right-1/4 animate-bounce delay-700">
+                            <div class="w-6 h-6 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center text-xs">⚡</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Background decorative elements -->
+        <div class="absolute top-20 left-10 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 right-20 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-purple-500/5 to-cyan-500/5 rounded-full blur-3xl"></div>
     </section>
     
     <!-- Gift Section -->
@@ -977,31 +1304,29 @@
                 <!-- Meme disclaimer -->
                 <div class="bg-purple-900/30 rounded-lg p-4 mb-6 max-w-2xl mx-auto">
                     <p class="text-xs text-gray-300">
-                        ⚠️ Not financial advice. Just vibes and diamond hands. 
-                        DYOR (Do Your Own Research) 🧠
+                        ⚠️ WARNING! IT IS NOT OFFICIAL FINTOPIO WEBSITE. THE OFFICIAL ONE IS https://fintopio.com/ 🧠
                         <br>
-                        <span class="text-yellow-400">May contain traces of hopium and copium 😅</span>
                     </p>
                 </div>
                 
                 <div class="social-links flex justify-center space-x-6 mb-6">
-                    <a href="#" class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center hover-lift text-lg">
+                    <a href="https://x.com/fintopio" class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center hover-lift text-lg">
                         📱
                     </a>
-                    <a href="#" class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center hover-lift text-lg">
+                    <a href="https://www.instagram.com/fintopio/" class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center hover-lift text-lg">
                         🐦
                     </a>
-                    <a href="#" class="w-12 h-12 bg-purple-700 rounded-full flex items-center justify-center hover-lift text-lg">
+                    <a href="https://t.me/fintopionews" class="w-12 h-12 bg-purple-700 rounded-full flex items-center justify-center hover-lift text-lg">
                         💬
                     </a>
-                    <a href="#" class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center hover-lift text-lg">
+                    <a href="https://www.linkedin.com/company/fintopio/" class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center hover-lift text-lg">
                         📺
                     </a>
                 </div>
                 
                 <!-- Fun footer stats -->
                 <div class="flex justify-center space-x-8 text-sm text-gray-400">
-                    <span>🔥 Hottest DeFi App 2024</span>
+                    <span>🔥 Hottest DeFi App 2025</span>
                     <span>💎 Diamond Hands Approved</span>
                     <span>🦍 Ape Friendly</span>
                 </div>
@@ -1077,6 +1402,30 @@
                     duration: 1.5,
                     x: 100,
                     opacity: 0,
+                    ease: "power3.out",
+                    delay: 0.3
+                });
+            }
+        });
+        
+        // Wallet section animation
+        ScrollTrigger.create({
+            trigger: ".wallet-section",
+            start: "top 80%",
+            onEnter: () => {
+                gsap.from(".wallet-phone", {
+                    duration: 1.5,
+                    x: 100,
+                    opacity: 0,
+                    scale: 0.8,
+                    ease: "power3.out"
+                });
+                
+                gsap.from(".download-option", {
+                    duration: 1,
+                    x: -50,
+                    opacity: 0,
+                    stagger: 0.1,
                     ease: "power3.out",
                     delay: 0.3
                 });
