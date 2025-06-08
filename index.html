@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fintopio - From CeFi to DeFi in One Tap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'rotate-slow': 'rotate 20s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(139, 92, 246, 0.5)' },
+                            '100%': { boxShadow: '0 0 40px rgba(139, 92, 246, 0.8)' },
+                        },
+                        rotate: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f0f23 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .crypto-glow {
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+        }
+        
+        .typing-animation {
+            overflow: hidden;
+            border-right: 2px solid #8b5cf6;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #8b5cf6; }
+        }
+        
+        .meteor {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: linear-gradient(90deg, #8b5cf6, transparent);
+            animation: meteor 3s linear infinite;
+        }
+        
+        @keyframes meteor {
+            0% {
+                transform: translateX(-100px) translateY(-100px);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(1000px) translateY(500px);
+                opacity: 0;
+            }
+        }
+        
+        .parallax-bg {
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #8b5cf6, transparent),
+                radial-gradient(2px 2px at 40px 70px, #06b6d4, transparent),
+                radial-gradient(1px 1px at 90px 40px, #8b5cf6, transparent);
+            background-repeat: repeat;
+            background-size: 100px 100px;
+            animation: parallax 20s linear infinite;
+        }
+        
+        @keyframes parallax {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen text-white overflow-x-hidden">
+    <!-- Animated Background Elements -->
+    <div class="fixed inset-0 parallax-bg opacity-30 pointer-events-none"></div>
+    
+    <!-- Floating Asteroids -->
+    <div class="fixed inset-0 pointer-events-none">
+        <div class="asteroid absolute top-20 left-10 w-8 h-8 bg-gray-600 rounded-full animate-float opacity-70"></div>
+        <div class="asteroid absolute top-40 right-20 w-6 h-6 bg-gray-500 rounded-full animate-float opacity-60" style="animation-delay: -2s;"></div>
+        <div class="asteroid absolute bottom-32 left-1/4 w-10 h-10 bg-gray-700 rounded-full animate-float opacity-50" style="animation-delay: -4s;"></div>
+        <div class="asteroid absolute top-1/3 right-1/3 w-4 h-4 bg-gray-600 rounded-full animate-float opacity-40" style="animation-delay: -1s;"></div>
+    </div>
+    
+    <!-- Meteors -->
+    <div class="meteor" style="top: 10%; left: 80%; animation-delay: 0s;"></div>
+    <div class="meteor" style="top: 20%; left: 60%; animation-delay: 2s;"></div>
+    <div class="meteor" style="top: 30%; left: 90%; animation-delay: 4s;"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-effect">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="logo text-2xl font-bold text-white">
+                    <span class="text-purple-400">fint</span>opio
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="nav-link text-gray-300 hover:text-purple-400 transition-colors">Home</a>
+                    <a href="#" class="nav-link text-gray-300 hover:text-purple-400 transition-colors">About</a>
+                    <a href="#" class="nav-link text-gray-300 hover:text-purple-400 transition-colors">Features</a>
+                    <a href="#" class="nav-link text-gray-300 hover:text-purple-400 transition-colors">Get Started</a>
+                </div>
+                <button class="start-btn bg-purple-600 hover:bg-purple-700 px-6 py-2 rounded-full transition-all hover-lift">
+                    Start Now
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero-section min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="hero-content">
+                <p class="hero-badge inline-block bg-purple-900/50 border border-purple-500 rounded-full px-4 py-2 text-sm mb-8 glass-effect">
+                    CeFi + DeFi
+                </p>
+                
+                <h1 class="hero-title text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                    From <span class="text-purple-400 typing-animation">CeFi to</span><br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">DeFi</span> in One Tap.
+                </h1>
+                
+                <p class="hero-description text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
+                    One wallet, two experiences — seamlessly merged. Instant switch between 
+                    fiat custodial transactions (CeFi) and full asset control (DeFi).
+                </p>
+                
+                <!-- Phone Mockup -->
+                <div class="phone-container relative mx-auto mb-12">
+                    <div class="phone-mockup relative w-80 h-96 mx-auto glass-effect rounded-3xl p-4 crypto-glow animate-float">
+                        <div class="phone-screen bg-gray-900 rounded-2xl h-full p-4 overflow-hidden">
+                            <div class="status-bar flex justify-between items-center mb-4 text-xs">
+                                <div class="flex space-x-1">
+                                    <span class="text-purple-400">DeFi</span>
+                                    <span class="text-gray-500">|</span>
+                                    <span class="text-gray-400">CeFi</span>
+                                </div>
+                                <div class="flex items-center space-x-1">
+                                    <div class="w-4 h-2 bg-green-400 rounded"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="wallet-display text-center mb-6">
+                                <p class="text-gray-400 text-sm mb-2">Wallet 1</p>
+                                <h2 class="text-2xl font-bold text-white crypto-balance">$954,518.44</h2>
+                                <p class="text-green-400 text-sm">+$2,341 (24HR)</p>
+                            </div>
+                            
+                            <div class="action-buttons flex justify-center space-x-4 mb-6">
+                                <button class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center hover-lift">
+                                    <span class="text-xs">S</span>
+                                </button>
+                                <button class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center hover-lift">
+                                    <span class="text-xs">R</span>
+                                </button>
+                                <button class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center hover-lift">
+                                    <span class="text-xs">Sw</span>
+                                </button>
+                                <button class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center hover-lift">
+                                    <span class="text-xs">B</span>
+                                </button>
+                                <button class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center hover-lift">
+                                    <span class="text-xs">Se</span>
+                                </button>
+                            </div>
+                            
+                            <div class="crypto-list space-y-3">
+                                <div class="crypto-item flex justify-between items-center">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-6 h-6 bg-orange-500 rounded-full"></div>
+                                        <div>
+                                            <p class="text-white text-sm font-medium">BTC</p>
+                                            <p class="text-gray-400 text-xs">Bitcoin</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-white text-sm">$52,847.32</p>
+                                        <p class="text-green-400 text-xs">+2.35%</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="crypto-item flex justify-between items-center">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-6 h-6 bg-blue-500 rounded-full"></div>
+                                        <div>
+                                            <p class="text-white text-sm font-medium">ETH</p>
+                                            <p class="text-gray-400 text-xs">Ethereum</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-white text-sm">$3,247.81</p>
+                                        <p class="text-red-400 text-xs">-1.2%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Animated Planet -->
+        <div class="planet absolute bottom-0 right-0 w-96 h-96 opacity-30">
+            <div class="w-full h-full bg-gradient-to-br from-purple-600 to-blue-800 rounded-full animate-rotate-slow"></div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features-section py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="feature-badge inline-block bg-purple-900/50 border border-purple-500 rounded-full px-4 py-2 text-sm mb-4">
+                    Multi-platform experience
+                </p>
+                <h2 class="text-4xl md:text-6xl font-bold mb-6">
+                    App. MiniApp.<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Web. You're Home.</span>
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="feature-content">
+                    <div class="feature-item mb-8 glass-effect rounded-xl p-6 hover-lift">
+                        <h3 class="text-xl font-bold mb-3 text-purple-400">Use Fintopio anywhere:</h3>
+                        <p class="text-gray-300">Web, iOS, Android, Telegram MiniApp</p>
+                    </div>
+                    
+                    <div class="mini-app-info glass-effect rounded-xl p-6">
+                        <h4 class="font-bold text-lg mb-2">MiniApp</h4>
+                        <p class="text-gray-300 mb-4">
+                            Manage your crypto seamlessly across all your favorite platforms.
+                        </p>
+                        <div class="platform-indicator text-sm text-purple-400">01</div>
+                    </div>
+                </div>
+                
+                <div class="phone-display relative">
+                    <div class="phone-frame w-64 h-96 mx-auto glass-effect rounded-3xl p-4 crypto-glow animate-float">
+                        <div class="screen bg-gray-900 rounded-2xl h-full p-4">
+                            <div class="screen-content">
+                                <div class="balance-display text-center mb-6">
+                                    <h3 class="text-2xl font-bold crypto-balance">$954,518.44</h3>
+                                    <p class="text-green-400 text-sm">+$2,341 (24HR)</p>
+                                </div>
+                                
+                                <div class="crypto-grid grid grid-cols-2 gap-3">
+                                    <div class="crypto-card bg-gray-800 rounded-lg p-3 hover-lift">
+                                        <div class="w-8 h-8 bg-orange-500 rounded-full mb-2"></div>
+                                        <p class="text-xs text-gray-400">BTC</p>
+                                        <p class="text-sm font-bold">$52,847</p>
+                                    </div>
+                                    <div class="crypto-card bg-gray-800 rounded-lg p-3 hover-lift">
+                                        <div class="w-8 h-8 bg-blue-500 rounded-full mb-2"></div>
+                                        <p class="text-xs text-gray-400">ETH</p>
+                                        <p class="text-sm font-bold">$3,247</p>
+                                    </div>
+                                    <div class="crypto-card bg-gray-800 rounded-lg p-3 hover-lift">
+                                        <div class="w-8 h-8 bg-green-500 rounded-full mb-2"></div>
+                                        <p class="text-xs text-gray-400">USDT</p>
+                                        <p class="text-sm font-bold">$1.00</p>
+                                    </div>
+                                    <div class="crypto-card bg-gray-800 rounded-lg p-3 hover-lift">
+                                        <div class="w-8 h-8 bg-purple-500 rounded-full mb-2"></div>
+                                        <p class="text-xs text-gray-400">SOL</p>
+                                        <p class="text-sm font-bold">$142.35</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gift Section -->
+    <section class="gift-section py-20 relative">
+        <div class="container mx-auto px-6 text-center">
+            <p class="gift-badge inline-block bg-purple-900/50 border border-purple-500 rounded-full px-4 py-2 text-sm mb-8">
+                Vouchers & Gifting
+            </p>
+            
+            <h2 class="text-4xl md:text-6xl font-bold mb-6">
+                Send Crypto as a<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Gift to Anyone.</span>
+            </h2>
+            
+            <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+                Even to those who don't have a Fintopio wallet.
+            </p>
+            
+            <!-- 3D Gift Box -->
+            <div class="gift-container relative mx-auto mb-12">
+                <div class="gift-box w-64 h-64 mx-auto relative animate-float crypto-glow">
+                    <div class="box-face box-front absolute w-full h-full bg-gradient-to-br from-purple-600 to-blue-800 rounded-lg"></div>
+                    <div class="box-lid absolute w-full h-16 bg-gradient-to-br from-purple-700 to-blue-900 rounded-lg transform -translate-y-2 animate-glow"></div>
+                    <div class="gift-ribbon absolute top-0 left-1/2 w-8 h-full bg-gradient-to-b from-yellow-400 to-yellow-600 transform -translate-x-1/2"></div>
+                    <div class="gift-ribbon-h absolute top-8 left-0 w-full h-8 bg-gradient-to-r from-yellow-400 to-yellow-600"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer-section py-12 glass-effect">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <div class="logo text-3xl font-bold text-white mb-4">
+                    <span class="text-purple-400">fint</span>opio
+                </div>
+                <p class="text-gray-400 mb-6">The future of crypto is here</p>
+                <div class="social-links flex justify-center space-x-6">
+                    <a href="#" class="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center hover-lift">
+                        <span class="text-sm">T</span>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center hover-lift">
+                        <span class="text-sm">X</span>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center hover-lift">
+                        <span class="text-sm">D</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Register GSAP plugins
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Loading animation
+        gsap.from(".hero-content", {
+            duration: 1.5,
+            y: 100,
+            opacity: 0,
+            ease: "power3.out",
+            delay: 0.5
+        });
+        
+        // Animate navigation
+        gsap.from("nav", {
+            duration: 1,
+            y: -100,
+            opacity: 0,
+            ease: "power3.out"
+        });
+        
+        // Crypto balance counter animation
+        function animateBalance() {
+            const balance = document.querySelector('.crypto-balance');
+            const target = 954518.44;
+            let current = 0;
+            const increment = target / 100;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                balance.textContent = `$${current.toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                })}`;
+            }, 30);
+        }
+        
+        // Phone mockup animation
+        gsap.from(".phone-mockup", {
+            duration: 2,
+            scale: 0.8,
+            rotation: 15,
+            opacity: 0,
+            ease: "elastic.out(1, 0.3)",
+            delay: 1
+        });
+        
+        // Features section animations
+        ScrollTrigger.create({
+            trigger: ".features-section",
+            start: "top 80%",
+            onEnter: () => {
+                gsap.from(".feature-item", {
+                    duration: 1,
+                    x: -100,
+                    opacity: 0,
+                    stagger: 0.2,
+                    ease: "power3.out"
+                });
+                
+                gsap.from(".phone-display", {
+                    duration: 1.5,
+                    x: 100,
+                    opacity: 0,
+                    ease: "power3.out",
+                    delay: 0.3
+                });
+            }
+        });
+        
+        // Gift section animation
+        ScrollTrigger.create({
+            trigger: ".gift-section",
+            start: "top 80%",
+            onEnter: () => {
+                gsap.from(".gift-box", {
+                    duration: 2,
+                    scale: 0,
+                    rotation: 720,
+                    ease: "elastic.out(1, 0.3)"
+                });
+            }
+        });
+        
+        // Parallax effect for asteroids
+        gsap.to(".asteroid", {
+            y: -100,
+            duration: 2,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            stagger: 0.5
+        });
+        
+        // Interactive hover effects
+        document.querySelectorAll('.hover-lift').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                gsap.to(element, {duration: 0.3, scale: 1.05, ease: "power2.out"});
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                gsap.to(element, {duration: 0.3, scale: 1, ease: "power2.out"});
+            });
+        });
+        
+        // Crypto cards hover animation
+        document.querySelectorAll('.crypto-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, {
+                    duration: 0.3,
+                    backgroundColor: "#374151",
+                    scale: 1.05,
+                    ease: "power2.out"
+                });
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    duration: 0.3,
+                    backgroundColor: "#1f2937",
+                    scale: 1,
+                    ease: "power2.out"
+                });
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                gsap.to(window, {duration: 1, scrollTo: 0, ease: "power3.inOut"});
+            });
+        });
+        
+        // Background particle animation
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'fixed w-1 h-1 bg-purple-400 rounded-full opacity-50 pointer-events-none';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = '100%';
+            document.body.appendChild(particle);
+            
+            gsap.to(particle, {
+                y: -window.innerHeight - 100,
+                duration: Math.random() * 5 + 3,
+                ease: "none",
+                onComplete: () => particle.remove()
+            });
+        }
+        
+        // Create particles periodically
+        setInterval(createParticle, 2000);
+        
+        // Initialize animations when page loads
+        window.addEventListener('load', () => {
+            animateBalance();
+            
+            // Add entrance animation for elements
+            gsap.from(".hero-badge", {
+                duration: 1,
+                scale: 0,
+                ease: "elastic.out(1, 0.3)",
+                delay: 0.8
+            });
+        });
+        
+        // Interactive planet rotation on scroll
+        gsap.to(".planet", {
+            rotation: 360,
+            duration: 10,
+            repeat: -1,
+            ease: "none"
+        });
+        
+        // Mouse movement parallax effect
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            gsap.to(".asteroid", {
+                x: mouseX * 20,
+                y: mouseY * 20,
+                duration: 2,
+                ease: "power3.out"
+            });
+            
+            gsap.to(".planet", {
+                x: mouseX * -30,
+                y: mouseY * -30,
+                duration: 2,
+                ease: "power3.out"
+            });
+        });
+    </script>
+</body>
+</html>
